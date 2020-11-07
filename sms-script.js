@@ -1,6 +1,15 @@
 $('#name-input').val(window.localStorage.getItem('Name'));
 $('#address-input').val( window.localStorage.getItem('Address'));
 
+const buttons = $('.sms-button');
+// Prevent sending sms with empty data
+buttons.on('click', (event) => {
+    if (!name || !address) {
+        $('#modal-form').modal('show');
+        event.preventDefault();
+    }
+})
+
 let name = $('#name-input').val();
 let address = $('#address-input').val();
 
@@ -14,12 +23,10 @@ $(document).ready(() => {
 })
 
 function setButtonsHref() {
-    let buttons = document.querySelectorAll('.sms-button');
-    buttons.forEach(button => {
-        
-        let code = button.getAttribute('id').split('-')[1];
+    $.each(buttons, (index, button) => {
+        let code = $(button).attr('id').split('-')[1];
         let href = `sms:13033?body=${code} ${name} ${address}`;
-        button.setAttribute('href', href);
+        $(button).attr('href', href);
     });
 }
 
@@ -32,6 +39,5 @@ function saveData() {
     setButtonsHref();
     alert('Τα στοιχεία αποθηκεύτηκαν επιτυχώς!');
     $('#modal-form').modal('hide');
-
-
 }
+
