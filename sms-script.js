@@ -1,6 +1,8 @@
 $('#name-input').val(window.localStorage.getItem('Name'));
 $('#address-input').val( window.localStorage.getItem('Address'));
 
+$('#footer-year').text(new Date().getFullYear());
+
 const buttons = $('.sms-button');
 // Prevent sending sms with empty data
 buttons.on('click', (event) => {
