@@ -14,12 +14,12 @@ if ('serviceWorker' in navigator) {
     })
 }
 
-
+const basePath = '/lockdown-sms/'
 const cacheName = 'lockdown-sms-v1';
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/images/virus_mask.webp',
+    basePath + 'index.html',
+    basePath + 'images/virus_mask.webp',
     'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
     'https://code.jquery.com/jquery-3.5.1.slim.min.js',
@@ -27,18 +27,19 @@ const urlsToCache = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff2',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf',
-    '/sms-script.js',
-    '/sms-style.css',
+    basePath + 'sms-script.js',
+    basePath + 'sms-style.css',
 ]
 
 self.addEventListener('install', (event) => {
     event.waitUntil(caches.open(cacheName)
     .then((cache) => {
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache).catch((error) => {
+            console.log(error);
+        });
     })
     .catch((error) => {
         console.log(error);
-        
     })
     )
 })
