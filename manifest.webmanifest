@@ -6,7 +6,7 @@
     "display": "standalone",
     "orientation": "portrait",
     "scope": "https://kryfos.com/lockdown-sms/",
-    "start_url": "/lockdown-sms",
+    "start_url": "https://kryfos.com/lockdown-sms/",
     "icons": [
         {
             "src": "images/virus_mask.webp",

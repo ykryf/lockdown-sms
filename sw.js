@@ -1,3 +1,5 @@
+
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').then((registration) => {
@@ -13,6 +15,7 @@ if ('serviceWorker' in navigator) {
 const cacheName = 'lockdown-sms-v1';
 const urlsToCache = [
     '/',
+    '/index.html',
     '/images/virus_mask.webp',
     'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
@@ -33,6 +36,7 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener   ('fetch', (event) => {
+    console.log(event.request.url);git 
     event.respondWith(caches.match(event.request).then((response) => {
         if (response) {
             return response;
