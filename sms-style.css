@@ -1,0 +1,29 @@
+body {
+    background-color: #2b2727eb;
+}
+
+#sms-buttons a {
+    height: 110px;
+    padding: 6px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#sms-1 {
+    background-color: #72d015b8;
+}
+#sms-2 {
+    background-color: #ff9007;
+}
+#sms-3 {
+    background-color: #bd2130;
+}
+#sms-4 {
+    background-color: #117a8b;
+}
+#sms-5 {
+    background-color: #6c757d;
+}
+
+#sms-6 {
+    background-color: #00a1ffe6;
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Lockdown SMS",
+    "short_name": "SMS",
+    "theme_color": "#14202a",
+    "background_color": "#2196f3",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "scope": "https://kryfos.com/lockdown-sms/",
+    "start_url": "/lockdown-sms",
+    "icons": [
+        {
+            "src": "images/virus_mask.webp",
+            "sizes": "192x192",
+            "type": "image/webp"
+          },
+          {
+            "src": "images/virus_mask.webp",
+            "sizes": "512x512",
+            "type": "image/webp"
+          }
+    ]
+  }
