@@ -5,8 +5,8 @@
     "background_color": "#2196f3",
     "display": "fullscreen",
     "orientation": "portrait",
-    "scope": "/",
-    "start_url": "/",
+    "scope": "https://kryfos.com/lockdown-sms/",
+    "start_url": "/lockdown-sms",
     "icons": [
         {
             "src": "images/virus_mask.webp",
