@@ -3,8 +3,15 @@ $('#address-input').val( window.localStorage.getItem('Address'));
 
 $('#footer-year').text(new Date().getFullYear());
 
-const url = '';
+
+const url = 'https://kryfos.com/lockdown-sms';
 const buttons = $('.sms-button');
+const downloadButton = $('#download-button');
+
+downloadButton.hide();
+
+//EVENT HANDLERS
+
 // Prevent sending sms with empty data
 buttons.on('click', (event) => {
     if (!name || !address) {
@@ -16,14 +23,35 @@ buttons.on('click', (event) => {
 $('#share-button').click(() => {
     if (navigator.share) {
         navigator.share({
-            url: url,
+            url: '',
             title: 'Lockdown SMS',
         })        
     } else {
-        // shareDialog.classList.add('is-open'); 
-        // TODO Implement fallback shareDialog
+        navigator.clipboard.writeText(url);
+        $.notify({
+            message: 'Το link αντιγράφηκε με επιτυχία.'
+        }, {
+            type: 'success'
+        })
     }
 })
+
+// ON beforeInstallPrompt
+let deferredEvent;
+$(document).on('beforeInstallPrompt', (event) => {
+    console.log('Prompt');
+    event.preventDefault();
+    deferredEvent = event;
+
+    downloadButton.show(2000);
+})
+
+// ON download
+downloadButton.click(() => {
+    deferredEvent.prompt();
+    downloadButton.hide();
+})
+
 
 let name = $('#name-input').val();
 let address = $('#address-input').val();
@@ -33,14 +61,22 @@ $(document).ready(() => {
 
     // Set event listener
     const saveButton = $('#save-button');
-    saveButton.click(saveData)
+    saveButton.click(saveData);
 
 })
 
 function setButtonsHref() {
     $.each(buttons, (index, button) => {
         let code = $(button).attr('id').split('-')[1];
-        let href = `sms:13033?body=${code} ${name} ${address}`;
+
+        let dataString = `${code} ${name} ${address}`;
+        let href;
+        // Check for ios
+        if (isIos()) {
+            href = `sms:13033&body=${dataString}`;
+        } else {
+            href = `sms:13033?body=${dataString}`;
+        }
         $(button).attr('href', href);
     });
 }
@@ -55,4 +91,17 @@ function saveData() {
     alert('Τα στοιχεία αποθηκεύτηκαν επιτυχώς!');
     $('#modal-form').modal('hide');
 }
+
+function isIos() {
+    return [
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
 

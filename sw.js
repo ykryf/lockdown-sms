@@ -22,7 +22,8 @@ const urlsToCache = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf',
     '/sms-script.js',
-    '/sms-style.css'
+    '/sms-style.css',
+    '/sw.js'
 ]
 
 self.addEventListener('install', (event) => {
