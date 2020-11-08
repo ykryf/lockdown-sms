@@ -3,7 +3,7 @@ $('#address-input').val( window.localStorage.getItem('Address'));
 
 $('#footer-year').text(new Date().getFullYear());
 
-const url = ''; // TODO: Change for production
+const url = '';
 const buttons = $('.sms-button');
 // Prevent sending sms with empty data
 buttons.on('click', (event) => {
@@ -16,6 +16,7 @@ buttons.on('click', (event) => {
 $('#share-button').click(() => {
     if (navigator.share) {
         navigator.share({
+            url: url,
             title: 'Lockdown SMS',
         })        
     } else {
