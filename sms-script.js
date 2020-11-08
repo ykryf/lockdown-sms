@@ -43,13 +43,13 @@ $(document).on('beforeInstallPrompt', (event) => {
     event.preventDefault();
     deferredEvent = event;
 
-    downloadButton.show(2000);
+    //downloadButton.show(2000);
 })
 
 // ON download
-downloadButton.click(() => {
-    deferredEvent.prompt();
+downloadButton.click(() => {    
     downloadButton.hide();
+    deferredEvent.prompt();
 })
 
 
