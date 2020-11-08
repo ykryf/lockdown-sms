@@ -18,6 +18,7 @@ const basePath = '/lockdown-sms/'
 const cacheName = 'lockdown-sms-v1';
 const urlsToCache = [
     '/',
+    basePath,
     basePath + 'index.html',
     basePath + 'images/virus_mask.webp',
     'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
