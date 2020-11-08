@@ -27,3 +27,7 @@ body {
 #sms-6 {
     background-color: #00a1ffe6;
 }
+
+#download-button {
+    display: none;
+}

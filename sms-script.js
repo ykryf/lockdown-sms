@@ -3,8 +3,15 @@ $('#address-input').val( window.localStorage.getItem('Address'));
 
 $('#footer-year').text(new Date().getFullYear());
 
+
 const url = 'https://kryfos.com/lockdown-sms';
 const buttons = $('.sms-button');
+const downloadButton = $('#download-button');
+
+downloadButton.hide();
+
+//EVENT HANDLERS
+
 // Prevent sending sms with empty data
 buttons.on('click', (event) => {
     if (!name || !address) {
@@ -28,6 +35,23 @@ $('#share-button').click(() => {
         })
     }
 })
+
+// ON beforeInstallPrompt
+let deferredEvent;
+$(document).on('beforeInstallPrompt', (event) => {
+    console.log('Prompt');
+    event.preventDefault();
+    deferredEvent = event;
+
+    downloadButton.show(2000);
+})
+
+// ON download
+downloadButton.click(() => {
+    deferredEvent.prompt();
+    downloadButton.hide();
+})
+
 
 let name = $('#name-input').val();
 let address = $('#address-input').val();
