@@ -1,12 +1,15 @@
 
-
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').then((registration) => {
+        navigator.serviceWorker.register('sw.js')
+        .then((registration) => {
             console.log('Service worker registered successfully.');
         }, (err) => {
             console.error("Registration failed.");
             console.error(err);
+        })
+        .catch((error) => {
+            console.log(error);
         })
     })
 }
@@ -26,17 +29,22 @@ const urlsToCache = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf',
     '/sms-script.js',
     '/sms-style.css',
-    '/sw.js'
 ]
 
 self.addEventListener('install', (event) => {
-    event.waitUntil(caches.open(cacheName).then((cache) => {
+    event.waitUntil(caches.open(cacheName)
+    .then((cache) => {
         return cache.addAll(urlsToCache);
-    }))
+    })
+    .catch((error) => {
+        console.log(error);
+        
+    })
+    )
 })
 
 self.addEventListener   ('fetch', (event) => {
-    console.log(event.request.url);git 
+    console.log(event.request.url);
     event.respondWith(caches.match(event.request).then((response) => {
         if (response) {
             return response;
