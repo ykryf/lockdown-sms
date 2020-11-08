@@ -3,7 +3,7 @@ $('#address-input').val( window.localStorage.getItem('Address'));
 
 $('#footer-year').text(new Date().getFullYear());
 
-const url = '';
+const url = 'https://kryfos.com/lockdown-sms';
 const buttons = $('.sms-button');
 // Prevent sending sms with empty data
 buttons.on('click', (event) => {
@@ -16,12 +16,16 @@ buttons.on('click', (event) => {
 $('#share-button').click(() => {
     if (navigator.share) {
         navigator.share({
-            url: url,
+            url: '',
             title: 'Lockdown SMS',
         })        
     } else {
-        // shareDialog.classList.add('is-open'); 
-        // TODO Implement fallback shareDialog
+        navigator.clipboard.writeText(url);
+        $.notify({
+            message: 'Το link αντιγράφηκε με επιτυχία.'
+        }, {
+            type: 'success'
+        })
     }
 })
 
@@ -33,7 +37,7 @@ $(document).ready(() => {
 
     // Set event listener
     const saveButton = $('#save-button');
-    saveButton.click(saveData)
+    saveButton.click(saveData);
 
 })
 
