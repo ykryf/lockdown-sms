@@ -21,6 +21,7 @@ const urlsToCache = [
     basePath,
     basePath + 'index.html',
     basePath + 'images/virus_mask.webp',
+    basePath + 'images/virus_mask.png',
     'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
     'https://code.jquery.com/jquery-3.5.1.min.js',
@@ -29,6 +30,7 @@ const urlsToCache = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.woff',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/webfonts/fa-solid-900.ttf',
     'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.3/bootstrap-notify.min.js',
     basePath + 'sms-script.js',
     basePath + 'sms-style.css',
 ]
