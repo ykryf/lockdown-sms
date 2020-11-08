@@ -44,7 +44,15 @@ $(document).ready(() => {
 function setButtonsHref() {
     $.each(buttons, (index, button) => {
         let code = $(button).attr('id').split('-')[1];
-        let href = `sms:13033?body=${code} ${name} ${address}`;
+
+        let dataString = `${code} ${name} ${address}`;
+        let href;
+        // Check for ios
+        if (isIos()) {
+            href = `sms:13033&body=${dataString}`;
+        } else {
+            href = `sms:13033?body=${dataString}`;
+        }
         $(button).attr('href', href);
     });
 }
@@ -59,4 +67,17 @@ function saveData() {
     alert('Τα στοιχεία αποθηκεύτηκαν επιτυχώς!');
     $('#modal-form').modal('hide');
 }
+
+function isIos() {
+    return [
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
 
