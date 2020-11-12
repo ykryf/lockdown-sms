@@ -1,7 +1,7 @@
 {
     "name": "Lockdown SMS",
     "short_name": "SMS",
-    "theme_color": "#14202a",
+    "theme_color": "#2b2727eb",
     "background_color": "#2196f3",
     "display": "standalone",
     "orientation": "portrait",
@@ -9,14 +9,20 @@
     "start_url": "https://kryfos.com/lockdown-sms/",
     "icons": [
         {
-            "src": "images/virus_mask.webp",
+            "src": "images/virus_mask_small",
             "sizes": "192x192",
-            "type": "image/webp"
+            "type": "image/png"
           },
           {
-            "src": "images/virus_mask.webp",
+            "src": "images/virus_mask_large",
             "sizes": "512x512",
-            "type": "image/webp"
+            "type": "image/png"
+          },
+          {
+            "src": "images/maskable_icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
           }
     ]
   }
